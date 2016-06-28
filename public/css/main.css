@@ -10,8 +10,13 @@
   width: 25px;
   height: 25px;
   background: white;
-  display: inline-block;;
+  display: inline-block;
+  margin-bottom: -5px;
+}
 
+.row{
+  width: 30%;
+  margin: 0 auto;
 }
 
 .border{
