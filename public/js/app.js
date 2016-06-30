@@ -1,19 +1,39 @@
 $(document).ready(function(){
   var container = $('.container');
-  var numOfRows = 10;
-  var numOfCols = 10;
+  var numOfRows;
+  var numOfCols;
+  var currentColor = 0;
+  var colorClasses= ['white', 'red', 'green', 'blue'];
 
+  inputRows();
+  inputColumns();
   initGrid();
   addClickHandlers();
 
-  function changeColor(){
-    var colorClasses= ['white', 'red', 'green', 'blue'];
-    var colorCycle = Math.round(Math.random()*colorClasses.length)+1;
-    var color = colorClasses[colorCycle];
-    $(this).removeClass(colorClasses.join(' '));
-    $(this).addClass(color);
-
+  function inputRows(){
+    var rows = prompt("Please enter the number of rows");
+    numOfRows = rows;
   }
+
+  function inputColumns(){
+    var cols = prompt("Please enter the number of columns");
+    numOfCols = cols;
+  }
+
+
+
+  function changeColor(){
+    if(currentColor<colorClasses.length){
+      $(this).removeClass(colorClasses.join(' '));
+      $(this).addClass(colorClasses[currentColor]);
+      currentColor +=1;
+    }else{
+      currentColor=0;
+      changeColor();
+    }
+  }
+
+
   function addClickHandlers(){
     var cells = $('.cell');
     for(var counter =0; counter<cells.length; counter +=1){
